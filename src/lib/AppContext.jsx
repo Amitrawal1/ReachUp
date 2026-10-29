@@ -72,8 +72,24 @@ export function AppProvider({ children }) {
     setSaved({})
   }
 
-  const value = { lang, setLang, t, label, pick, profile, setProfile, saved, updateSaved, removeSaved, resetAll }
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>
+  // Small message at the bottom of the screen that hides itself after a few seconds
+  const [toast, setToast] = useState(null)
+  const showToast = (text) => {
+    setToast(text)
+    setTimeout(() => setToast(null), 3000)
+  }
+
+  const value = { lang, setLang, t, label, pick, profile, setProfile, saved, updateSaved, removeSaved, resetAll, showToast }
+  return (
+    <AppContext.Provider value={value}>
+      {children}
+      {toast && (
+        <div className="fixed inset-x-0 bottom-24 z-50 mx-auto w-fit max-w-[90%] rounded-xl bg-slate-900 px-4 py-3 text-center text-sm font-medium text-white shadow-lg">
+          {toast}
+        </div>
+      )}
+    </AppContext.Provider>
+  )
 }
 
 export function useApp() {

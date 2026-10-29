@@ -107,13 +107,25 @@ export function buildFeed(opportunities, profile) {
   return { matches, blocked }
 }
 
+// Other opportunities the student IS eligible for, most similar first.
+// Used when a student is not eligible or was not selected, so they always have a next step.
+export function similarOpportunities(opp, opportunities, profile, count = 3) {
+  const { matches } = buildFeed(opportunities, profile)
+  const shared = (o) => o.interests.filter((i) => opp.interests.includes(i)).length
+  return matches
+    .filter((m) => m.opp.id !== opp.id && m.eligibility.eligible)
+    .sort((a, b) => shared(b.opp) - shared(a.opp) || b.score - a.score)
+    .slice(0, count)
+}
+
 // Short reasons for "Why this suits you"
 export function whyItSuits(opp, profile, eligibility) {
   const reasons = []
   const common = opp.interests.filter((i) => profile.interests.includes(i))
   if (common.length) reasons.push({ key: 'whyInterest', params: { interests: common } })
   if (eligibility.eligible) reasons.push({ key: 'whyEligible' })
-  if (opp.remote) reasons.push({ key: 'whyRemote' })
+  // "Do it from home" only makes sense for work, not for scholarships
+  if (opp.remote && opp.type !== 'scholarship') reasons.push({ key: 'whyRemote' })
   if (opp.travelSupport) reasons.push({ key: 'whyTravel' })
   if (opp.monthlyValue >= 5000) reasons.push({ key: 'whyPaid' })
   return reasons
