@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Noto Sans Devanagari", ui-sans-serif, system-ui, sans-serif;
+}
+
+html,
+body {
+  background: #f1f5f9;
+  -webkit-tap-highlight-color: transparent;
+}
