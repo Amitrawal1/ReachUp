@@ -5,8 +5,25 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useApp } from '../lib/AppContext'
 
+// Ready-made student so judges can see the feed in one tap
+const SAMPLE_STUDENT = {
+  name: 'Priya',
+  age: 22,
+  gender: 'female',
+  education: 'diploma',
+  stream: 'engineering',
+  marks: 72,
+  state: 'Uttar Pradesh',
+  category: 'sc',
+  income: 2.5,
+  employed: false,
+  interests: ['tech', 'creative'],
+  prefersRemote: true,
+  phone: '9876543210',
+}
+
 export default function Welcome() {
-  const { t, lang, setLang } = useApp()
+  const { t, lang, setLang, setProfile } = useApp()
   const navigate = useNavigate()
   const [stage, setStage] = useState('phone') // 'phone' then 'otp'
   const [phone, setPhone] = useState('')
@@ -103,6 +120,16 @@ export default function Welcome() {
             </button>
           </form>
         )}
+
+        <button
+          onClick={() => {
+            setProfile(SAMPLE_STUDENT)
+            navigate('/feed')
+          }}
+          className="mt-4 w-full text-sm font-semibold text-indigo-600 underline underline-offset-4"
+        >
+          {t('trySample')}
+        </button>
       </div>
     </div>
   )

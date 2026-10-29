@@ -1,8 +1,12 @@
 // Simple service worker so the app still opens on slow or no internet.
 // It saves every page and file the first time it loads, then serves the saved copy if the network fails.
-const CACHE = 'reachup-v1'
+const CACHE = 'reachup-v2'
 
-self.addEventListener('install', () => self.skipWaiting())
+self.addEventListener('install', (event) => {
+  // Save the main page right away, so any app link works offline
+  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(['/', '/manifest.json', '/logo.svg'])))
+  self.skipWaiting()
+})
 
 self.addEventListener('activate', (event) => {
   // Remove old caches when a new version is deployed
@@ -25,7 +29,13 @@ self.addEventListener('fetch', (event) => {
         caches.open(CACHE).then((cache) => cache.put(req, copy))
         return res
       })
-      // Network failed: use the saved copy, or the home page for app routes
-      .catch(() => caches.match(req).then((hit) => hit || caches.match('/')))
+      .catch(async () => {
+        // Network failed: use the saved copy.
+        // For app pages like /my-list, the main page is enough because React draws the screen.
+        const hit = await caches.match(req)
+        if (hit) return hit
+        if (req.mode === 'navigate') return caches.match('/')
+        return Response.error()
+      })
   )
 })

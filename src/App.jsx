@@ -9,6 +9,7 @@ import Profile from './pages/Profile'
 import Feed from './pages/Feed'
 import Detail from './pages/Detail'
 import MyList from './pages/MyList'
+import WhatsappPreview from './pages/WhatsappPreview'
 
 // Pages that need a finished profile send new students to the welcome screen
 function NeedsProfile({ children }) {
@@ -40,6 +41,7 @@ export default function App() {
         <Route path="/feed" element={<NeedsProfile><Feed /></NeedsProfile>} />
         <Route path="/opportunity/:id" element={<NeedsProfile><Detail /></NeedsProfile>} />
         <Route path="/my-list" element={<NeedsProfile><MyList /></NeedsProfile>} />
+        <Route path="/whatsapp" element={<NeedsProfile><WhatsappPreview /></NeedsProfile>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>

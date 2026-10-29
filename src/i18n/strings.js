@@ -19,6 +19,7 @@ export const strings = {
     otpHint: 'Demo: any 4 digits work',
     verify: 'Verify & continue',
     getStarted: 'Get started',
+    trySample: 'Just looking? Try with a sample student (Priya, 22, UP)',
 
     // Profile questions
     step: 'Question',
@@ -161,6 +162,7 @@ export const strings = {
     otpHint: 'डेमो: कोई भी 4 अंक चलेंगे',
     verify: 'वेरिफ़ाई करें और आगे बढ़ें',
     getStarted: 'शुरू करें',
+    trySample: 'सिर्फ़ देखना है? सैंपल छात्रा (प्रिया, 22, UP) से आज़माएँ',
 
     step: 'सवाल',
     of: 'में से',

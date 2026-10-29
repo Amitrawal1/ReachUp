@@ -1,16 +1,55 @@
-# React + Vite
+# ReachUp
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+**A bridge between rural talent and opportunities.**
 
-Currently, two official plugins are available:
+ReachUp brings verified internships, jobs, scholarships and training programs to students in villages and small towns, in their own language (Hindi / English), and guides them until they apply.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This is the Phase 1 prototype.
 
-## React Compiler
+## What the prototype does
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Sign up** with mobile number + OTP (demo: any 4 digits), language choice first
+- **Simple profile** in 12 one-tap questions, with voice input for the name
+- **Matched feed** ranked by eligibility, interests, benefit and deadline
+- **Eligibility check** rule by rule: "You are eligible ✅" or exactly what is missing, with tips to fix it
+- **Scam check** that blocks fake listings (fee asked, unknown source, personal contact only, too-good pay, pressure words)
+- **Detail page** with simple explanation, why it suits you, document checklist, steps to apply, read aloud, share on WhatsApp
+- **Deadline reminders** with browser notifications, plus a "Due soon" list
+- **My list** to track every application: Saved → Applied → Interview → Selected / Not selected (with next suggestions)
+- **WhatsApp channel preview** (planned for Phase 2)
+- **Works offline** after the first visit (PWA), can be installed on Android
 
-## Expanding the Oxlint configuration
+## Run locally
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```bash
+npm install
+npm run dev
+```
+
+Open http://localhost:5173. Tip: use Chrome DevTools phone view (390 px wide).
+
+## Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Project structure
+
+```
+src/
+  data/opportunities.js   demo opportunity list (real govt schemes + demo partners + 2 fake listings)
+  lib/matching.js         eligibility check and match score
+  lib/scamCheck.js        rule-based scam detection
+  lib/reminders.js        deadline notifications
+  lib/AppContext.jsx      language, profile and saved items (stored in the browser)
+  i18n/strings.js         all Hindi and English text
+  pages/                  Welcome, Profile, Feed, Detail, MyList, WhatsappPreview
+  components/             shared UI pieces
+public/sw.js              offline support
+```
+
+## Note on data
+
+Government schemes are real, but amounts and rules are simplified for the demo. Companies marked "demo partner" are made up. Always check the official website before applying.

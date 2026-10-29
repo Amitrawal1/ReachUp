@@ -25,7 +25,10 @@ export default function Detail() {
 
   // Page opens at the top, not where the feed was scrolled.
   // useLayoutEffect runs before the screen is drawn, so there is no jump.
-  useLayoutEffect(() => window.scrollTo(0, 0), [id])
+  // (Curly braces so the browser's return value is not passed to React.)
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+  }, [id])
 
   if (!opp) {
     return (
