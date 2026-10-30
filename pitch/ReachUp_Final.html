@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ReachUp – Final Prototype</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 16mm 15mm; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Helvetica Neue", Arial, "Kohinoor Devanagari", sans-serif; color: #1e293b; font-size: 10.5pt; line-height: 1.45; margin: 0; }
+  h1 { font-size: 30pt; margin: 0; color: #4338ca; letter-spacing: -0.5px; }
+  h2, h3 { break-after: avoid; }
+  h2 { font-size: 15pt; color: #312e81; margin: 18px 0 6px; padding-bottom: 4px; border-bottom: 2px solid #e0e7ff; }
+  h3 { font-size: 11.5pt; margin: 12px 0 4px; color: #1e1b4b; }
+  p { margin: 4px 0 6px; }
+  ul { margin: 4px 0 6px; padding-left: 18px; }
+  li { margin: 2px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 6px 0 10px; font-size: 9.5pt; page-break-inside: auto; }
+  tr { page-break-inside: avoid; }
+  th { background: #eef2ff; color: #312e81; text-align: left; padding: 6px 8px; border: 1px solid #c7d2fe; }
+  td { padding: 5px 8px; border: 1px solid #e2e8f0; vertical-align: top; }
+  .page-break { page-break-before: always; }
+  .sub { font-size: 13pt; color: #475569; margin-top: 4px; }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 8.5pt; font-weight: 600; white-space: nowrap; }
+  .done { background: #d1fae5; color: #065f46; }
+  .next { background: #fef3c7; color: #92400e; }
+  .later { background: #e2e8f0; color: #475569; }
+  .box { border: 1px solid #c7d2fe; background: #f5f7ff; border-radius: 8px; padding: 10px 12px; margin: 8px 0; }
+  .note { border-left: 4px solid #f59e0b; background: #fffbeb; padding: 8px 12px; margin: 8px 0; font-size: 9.5pt; }
+  .links td { border: none; padding: 2px 8px 2px 0; }
+  .shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 8px 0; }
+  .shot { text-align: center; page-break-inside: avoid; }
+  .shot img { width: 100%; border-radius: 10px; border: 1px solid #cbd5e1; }
+  .shot p { font-size: 8.5pt; color: #475569; margin: 4px 0 0; line-height: 1.3; }
+  .flow { display: flex; gap: 6px; align-items: stretch; margin: 8px 0; }
+  .flow div { flex: 1; background: #eef2ff; border-radius: 8px; padding: 8px; font-size: 9pt; text-align: center; }
+  .flow b { display: block; color: #4338ca; font-size: 10pt; }
+  .arrow { flex: 0 0 auto !important; background: none !important; align-self: center; color: #6366f1; font-weight: bold; padding: 0 !important; }
+  .cover { border-radius: 14px; background: linear-gradient(135deg, #4f46e5, #7c3aed); color: white; padding: 26px 26px 22px; margin-bottom: 14px; }
+  .cover h1 { color: white; font-size: 34pt; }
+  .cover .sub { color: #e0e7ff; }
+  .cover .tag { margin-top: 14px; font-size: 10pt; color: #c7d2fe; }
+  .muted { color: #64748b; font-size: 9pt; }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER + PROBLEM ============ -->
+<div class="cover">
+  <h1>ReachUp</h1>
+  <div class="sub">A Bridge Between Rural Talent and Opportunities</div>
+  <div class="tag">SaarthiX Ideathon · Level 2 – Final Prototype · October 2026</div>
+</div>
+
+<table class="links">
+  <!--LIVE_LINK_ROW-->
+  <tr><td><b>Source code</b></td><td>github.com/Amitrawal1/ReachUp</td></tr>
+  <tr><td><b>Prototype</b></td><td>Working mobile-first web app (PWA) in Hindi and English, installable on Android and usable offline</td></tr>
+</table>
+
+<h2>1. The Problem</h2>
+<p>Many talented students and young professionals live in small towns and villages. They have the skills and the interest, but they often do not know about the internships, jobs, scholarships, fellowships, training programs and competitions that are open to them. Students in big cities hear about these through seniors, college placement cells, LinkedIn and professional networks. Rural students usually do not have this network.</p>
+<p>The main problems are:</p>
+<ul>
+  <li><b>Scattered information:</b> opportunities are spread across many websites, apps, government portals and social media pages. There is no single place to see what is relevant.</li>
+  <li><b>Language barrier:</b> most listings and application forms are only in English.</li>
+  <li><b>No network or guidance:</b> students have no mentors or seniors to tell them which opportunity is right for them, how to apply, or how to prepare.</li>
+  <li><b>Low awareness of eligibility:</b> many students think an opportunity is "not for them" and never apply, even when they are eligible.</li>
+  <li><b>Missed deadlines:</b> by the time news reaches a small town, the last date has often passed.</li>
+  <li><b>Weak internet and basic phones:</b> heavy websites do not work well on slow data or low-end phones.</li>
+  <li><b>Fake listings and scams:</b> fake job offers that ask for registration fees target students who cannot easily verify them.</li>
+  <li><b>Hard application process:</b> students struggle with resumes, cover letters, document uploads and interviews.</li>
+</ul>
+<p>As a result, a lot of real talent is never discovered, and organisations miss out on capable people from outside big cities.</p>
+
+<h2>2. Our Solution</h2>
+<p><b>ReachUp</b> is a mobile-first, multilingual platform that brings the right opportunities to rural and semi-urban youth and helps them all the way from finding an opportunity to getting selected.</p>
+<p>It works on a simple idea: <b>instead of asking students to search everywhere, we bring verified and relevant opportunities to them, in their own language, on the apps they already use, and we guide them until they apply.</b></p>
+
+<div class="flow">
+  <div><b>Discover</b>Verified, matched opportunities in one place</div>
+  <div class="arrow">→</div>
+  <div><b>Prepare</b>Guides, checklist, skill suggestions</div>
+  <div class="arrow">→</div>
+  <div><b>Apply</b>Eligibility check, steps, reminders</div>
+  <div class="arrow">→</div>
+  <div><b>Grow</b>Track results, next best options</div>
+</div>
+
+<h3>2.1 Four Steps: Discover, Prepare, Apply, Grow</h3>
+<table>
+  <tr><th style="width:18%">Step</th><th>How ReachUp helps</th></tr>
+  <tr><td><b>Discover</b></td><td>One place for internships, jobs, scholarships, fellowships, training programs and competitions, collected from many sources, verified and matched to the student's profile.</td></tr>
+  <tr><td><b>Prepare</b></td><td>Simple guides, free course suggestions, a resume builder, mock interview practice and mentor support for each opportunity.</td></tr>
+  <tr><td><b>Apply</b></td><td>Eligibility check, document checklist, step-by-step application help and deadline reminders.</td></tr>
+  <tr><td><b>Grow</b></td><td>Tracking of all applications, feedback after results, and new suggestions based on what the student has done.</td></tr>
+</table>
+
+<!-- ============ PROTOTYPE (NEW) ============ -->
+
+<h2>3. The Prototype: What We Built</h2>
+<p>For Level 2 we built the full <b>Phase 1</b> of our plan as a working app, and added two items from Phase 2 (scam check and a WhatsApp channel preview). Everything below can be tried on the live link.</p>
+
+<div class="shots">
+  <div class="shot"><img src="screens/1-welcome.png"><p><b>Sign up</b><br>Language first, mobile number + OTP</p></div>
+  <div class="shot"><img src="screens/8-profile-q.png"><p><b>Simple profile</b><br>12 one-tap questions, voice input</p></div>
+  <div class="shot"><img src="screens/2-feed.png"><p><b>Matched feed</b><br>"You are eligible" on every card</p></div>
+  <div class="shot"><img src="screens/3-scam.png"><p><b>Scam check</b><br>Fake offers blocked, with reasons</p></div>
+  <div class="shot"><img src="screens/4-detail.png"><p><b>Guided application</b><br>Why it suits you, eligibility, documents</p></div>
+  <div class="shot"><img src="screens/5-not-eligible.png"><p><b>Not eligible?</b><br>Exactly what is missing + how to fix it</p></div>
+  <div class="shot"><img src="screens/6-mylist.png"><p><b>Track &amp; remind</b><br>Status tracker, deadline alerts</p></div>
+  <div class="shot"><img src="screens/7-whatsapp.png"><p><b>WhatsApp preview</b><br>Weekly matches without an app</p></div>
+</div>
+
+<h3>3.1 Features in the prototype</h3>
+<table>
+  <tr><th style="width:24%">Feature</th><th>What it does in the prototype</th><th style="width:22%">Problem it solves</th></tr>
+  <tr><td><b>Sign up + language</b></td><td>Mobile number and OTP. Hindi or English is chosen first, and can be switched on every screen.</td><td>Language barrier</td></tr>
+  <tr><td><b>Q&amp;A profile</b></td><td>12 short questions, one per screen, mostly one tap (education, stream, marks, state, category, family income, interests). Name can be spoken.</td><td>Long forms, low digital confidence</td></tr>
+  <tr><td><b>Smart matching</b></td><td>Every opportunity gets a score from eligibility, interest match, benefit (stipend, travel, remote) and deadline urgency. Best matches first.</td><td>Scattered information</td></tr>
+  <tr><td><b>Eligibility check</b></td><td>Rules (age, education, stream, gender, category, income, marks, employment) are checked one by one. The student sees "You are eligible" or exactly what is missing, with a tip to fix it.</td><td>Low awareness of eligibility</td></tr>
+  <tr><td><b>Scam check</b></td><td>Each listing is checked for 5 warning signs: asks for a fee, unknown source, only a personal phone/WhatsApp, very high pay with no qualification, pressure words. Fake listings are blocked and the student sees why.</td><td>Fake listings and scams</td></tr>
+  <tr><td><b>Guided detail page</b></td><td>Simple explanation, "why it suits you", document checklist, numbered steps to apply, read aloud in Hindi/English, share on WhatsApp.</td><td>Hard application process</td></tr>
+  <tr><td><b>Deadline reminders</b></td><td>Saving an opportunity turns on a phone notification 3 days before the last date, plus a "Due soon" list.</td><td>Missed deadlines</td></tr>
+  <tr><td><b>Application tracker</b></td><td>Saved → Applied → Test/Interview → Selected / Not selected. If not selected, similar opportunities are suggested right away.</td><td>No guidance after applying</td></tr>
+  <tr><td><b>Low-data PWA</b></td><td>Light web app (about 110 KB download), can be installed on Android, opens offline after the first visit.</td><td>Weak internet, basic phones</td></tr>
+  <tr><td><b>WhatsApp preview</b></td><td>Shows how students without the app will get their weekly top matches and reply with a number for details.</td><td>Students who will not install apps</td></tr>
+</table>
+
+<h3>3.2 How the prototype works</h3>
+<div class="flow">
+  <div><b>Opportunity data</b>Government schemes, partner listings</div>
+  <div class="arrow">→</div>
+  <div><b>Scam check</b>5 warning-sign rules</div>
+  <div class="arrow">→</div>
+  <div><b>Eligibility + score</b>Profile vs. each rule</div>
+  <div class="arrow">→</div>
+  <div><b>Student screens</b>Feed, detail, tracker</div>
+</div>
+<p>The prototype runs fully in the browser: the student's profile and saved list stay on their own phone, which keeps data private and lets the app work offline. In the full product the same matching and scam-check logic will read from a live database filled by partner APIs, portal feeds and the organisation portal.</p>
+
+<div class="note"><b>About the demo data:</b> the government schemes in the prototype are real (PM Internship Scheme, National Scholarship Portal, Central Sector Scholarship, AICTE Pragati, PMKVY / Skill India, NATS, NAPS, AICTE internships, National Career Service, Smart India Hackathon), with simplified amounts and rules. Deadlines and the companies marked "demo partner" are sample data. Two fake listings are included on purpose to demonstrate the scam check.</div>
+
+<!-- ============ HOW IT WORKS ============ -->
+
+<h2>4. How It Works (User Flow)</h2>
+<table>
+  <tr><th style="width:22%">Step</th><th>What happens</th><th style="width:16%">Prototype</th></tr>
+  <tr><td><b>1. Sign up</b></td><td>Student registers with a mobile number through the app, website or WhatsApp. They can choose their language.</td><td><span class="pill done">Built</span></td></tr>
+  <tr><td><b>2. Simple profile</b></td><td>A short question-and-answer flow (text or voice) collects education, skills, interests, location and preferences. No long forms.</td><td><span class="pill done">Built</span></td></tr>
+  <tr><td><b>3. Matching</b></td><td>The system finds opportunities the student is eligible for and ranks them by relevance, deadline and benefit (stipend, remote, travel support).</td><td><span class="pill done">Built</span></td></tr>
+  <tr><td><b>4. Daily / weekly feed</b></td><td>Student gets a short list of top matches in their language on the app, WhatsApp or SMS.</td><td><span class="pill done">App</span> <span class="pill next">WhatsApp preview</span></td></tr>
+  <tr><td><b>5. Guided application</b></td><td>For each opportunity, the student sees what it is, why it suits them, what is needed and how to apply, with a checklist and reminders.</td><td><span class="pill done">Built</span></td></tr>
+  <tr><td><b>6. Support</b></td><td>Student can ask questions to a chatbot, book time with a mentor, or visit a local champion for help.</td><td><span class="pill later">Phase 2–3</span></td></tr>
+  <tr><td><b>7. Track and follow up</b></td><td>Student marks the status of each application and gets reminders for tests and interviews, and tips if not selected.</td><td><span class="pill done">Built</span></td></tr>
+</table>
+
+<h2>5. Main Features (Full Product)</h2>
+<table>
+  <tr><th style="width:21%">Feature</th><th>What it does</th><th style="width:20%">Problem it solves</th><th style="width:12%">Status</th></tr>
+  <tr><td><b>Opportunity Aggregator</b></td><td>Collects opportunities from government portals, job and internship sites, scholarship portals, company career pages and partner organisations into one place.</td><td>Scattered information</td><td><span class="pill next">Phase 2</span></td></tr>
+  <tr><td><b>Verification and Scam Check</b></td><td>Each listing is checked for source, organisation details and warning signs (like asking for fees). Verified listings get a badge.</td><td>Fake listings and scams</td><td><span class="pill done">Built</span></td></tr>
+  <tr><td><b>Smart Matching and Eligibility Check</b></td><td>Matches the student's profile with opportunity requirements and clearly says "You are eligible" or what is missing.</td><td>Low awareness of eligibility</td><td><span class="pill done">Built</span></td></tr>
+  <tr><td><b>Local Language and Voice</b></td><td>Listings, guides and chatbot available in Indian languages. Students can speak instead of typing.</td><td>Language barrier</td><td><span class="pill done">Hindi + English</span></td></tr>
+  <tr><td><b>Low-Data Access</b></td><td>Light app that works on slow internet, offline saving, WhatsApp bot, and SMS / missed-call alerts for basic phones.</td><td>Weak internet and basic phones</td><td><span class="pill done">Lite PWA</span></td></tr>
+  <tr><td><b>Application Assistant</b></td><td>Resume builder from simple answers, cover letter help, document checklist, form-filling guidance and deadline reminders.</td><td>Hard application process, missed deadlines</td><td><span class="pill done">Checklist + reminders</span></td></tr>
+  <tr><td><b>Mentor Connect</b></td><td>Volunteer mentors (alumni, working professionals) for short calls, resume review and mock interviews.</td><td>No network or guidance</td><td><span class="pill later">Phase 3</span></td></tr>
+  <tr><td><b>Skill Gap Suggestions</b></td><td>If a student is not yet eligible, the system suggests free courses (for example from government learning platforms) to close the gap.</td><td>Missing skills</td><td><span class="pill done">Basic tips</span></td></tr>
+  <tr><td><b>Community Champions</b></td><td>Trained local volunteers at colleges, ITIs, polytechnics and common service centres help students who are new to digital tools.</td><td>Low digital confidence</td><td><span class="pill later">Phase 3</span></td></tr>
+  <tr><td><b>Organisation Portal</b></td><td>Companies, NGOs and institutions can post opportunities, search rural talent by skill and location, and mark roles as remote-friendly.</td><td>Organisations cannot reach rural talent</td><td><span class="pill next">Phase 2</span></td></tr>
+</table>
+
+<!-- ============ CHANNELS / TECH / SOURCES ============ -->
+
+<h2>6. Access Channels</h2>
+<table>
+  <tr><th style="width:28%">Channel</th><th>Who it serves</th></tr>
+  <tr><td><b>Android app (lite)</b></td><td>Students with smartphones; works on low-end phones and slow data, with offline saving.</td></tr>
+  <tr><td><b>Website (PWA)</b></td><td>Students using cyber cafes, college labs or common service centres.</td></tr>
+  <tr><td><b>WhatsApp bot</b></td><td>Students who use WhatsApp daily but do not want to install a new app.</td></tr>
+  <tr><td><b>SMS and missed-call alerts</b></td><td>Students with basic phones or very poor internet.</td></tr>
+  <tr><td><b>Local champions</b></td><td>Students who need in-person help to get started.</td></tr>
+</table>
+
+<h3>Supporting the user throughout</h3>
+<ul>
+  <li><b>Before applying:</b> explains each opportunity in simple words, shows eligibility, required documents and preparation tips.</li>
+  <li><b>While applying:</b> step-by-step help, chatbot for doubts, resume and document support.</li>
+  <li><b>After applying:</b> status tracking, reminders for tests and interviews, mock interview practice.</li>
+  <li><b>After results:</b> feedback, next best opportunities, and skill suggestions so the student keeps moving forward.</li>
+</ul>
+
+<h2>7. Technology Stack</h2>
+<table>
+  <tr><th style="width:20%">Part</th><th style="width:38%">Prototype (built)</th><th>Full product (planned)</th></tr>
+  <tr><td><b>App</b></td><td>React + Vite + Tailwind CSS, Progressive Web App with offline support</td><td>Same PWA + Flutter or React Native lite Android app</td></tr>
+  <tr><td><b>Backend</b></td><td>None needed: logic runs in the browser</td><td>Node.js / Python FastAPI</td></tr>
+  <tr><td><b>Database and search</b></td><td>Opportunity list in the app; profile stored on the student's phone</td><td>PostgreSQL, Elasticsearch for fast opportunity search</td></tr>
+  <tr><td><b>Matching</b></td><td>Rule-based eligibility engine + relevance score</td><td>Recommendation model learning from applications and selections</td></tr>
+  <tr><td><b>Scam detection</b></td><td>Rule-based checker (5 warning signs)</td><td>ML model + user reporting + organisation verification</td></tr>
+  <tr><td><b>Language and voice</b></td><td>Hindi / English, browser speech-to-text and read aloud</td><td>More Indian languages via Bhashini / IndicTrans</td></tr>
+  <tr><td><b>Messaging</b></td><td>Browser notifications for deadlines; WhatsApp preview</td><td>WhatsApp Business API, SMS and IVR gateway, push notifications</td></tr>
+  <tr><td><b>Data collection</b></td><td>Curated list</td><td>Partner APIs, RSS feeds and web scrapers with regular updates</td></tr>
+  <tr><td><b>Deployment</b></td><td>Vercel (free hosting)</td><td>Cloud hosting with Docker</td></tr>
+</table>
+
+<h2>8. Opportunity Sources</h2>
+<table>
+  <tr><th style="width:24%">Type</th><th>Examples of sources</th></tr>
+  <tr><td><b>Government</b></td><td>National Career Service, PM Internship Scheme, AICTE internship portal, National Scholarship Portal, Skill India</td></tr>
+  <tr><td><b>Private platforms</b></td><td>Internship and job portals, competition and hackathon platforms, company career pages</td></tr>
+  <tr><td><b>Scholarships and fellowships</b></td><td>Scholarship portals, CSR foundations, university and NGO fellowship programs</td></tr>
+  <tr><td><b>Direct partners</b></td><td>Companies, startups, NGOs and colleges posting directly on the organisation portal</td></tr>
+</table>
+
+<!-- ============ WHO / WHY / DIFFERENT ============ -->
+
+<h2>9. Who It Is For</h2>
+<table>
+  <tr><th style="width:30%">User</th><th>How ReachUp helps</th></tr>
+  <tr><td><b>Students in rural areas and small towns</b></td><td>Find verified opportunities in their language, know if they are eligible, and get help to apply.</td></tr>
+  <tr><td><b>Young job seekers and graduates</b></td><td>Discover jobs, apprenticeships and skill programs near them or remote.</td></tr>
+  <tr><td><b>Colleges, ITIs and polytechnics</b></td><td>Share opportunities with all students and track how many apply and get selected.</td></tr>
+  <tr><td><b>Companies and startups</b></td><td>Reach a large pool of motivated talent outside big cities, especially for remote roles.</td></tr>
+  <tr><td><b>NGOs, CSR programs and government schemes</b></td><td>Make sure their scholarships and programs actually reach the people they are meant for.</td></tr>
+  <tr><td><b>Mentors and alumni</b></td><td>Give back by guiding students from their home region in a few minutes a week.</td></tr>
+</table>
+
+<h2>10. Why This Solution Should Exist</h2>
+<ul>
+  <li><b>Talent is everywhere, but opportunity is not.</b> A student's location should not decide whether they hear about a scholarship or an internship.</li>
+  <li><b>Many good opportunities go unused.</b> Scholarships, government internships and training programs often get fewer applications from rural areas, not because students are not capable, but because they never hear about them.</li>
+  <li><b>Remote work has removed distance.</b> Many internships and jobs can now be done from anywhere, but rural students still lack the link to find them.</li>
+  <li><b>Phones and WhatsApp are now common in villages.</b> The channel to reach rural youth already exists; it only needs the right content in the right language.</li>
+  <li><b>Organisations want diverse talent.</b> Companies and programs want to reach beyond big cities but have no easy way to do it.</li>
+  <li><b>Guidance changes outcomes.</b> Just showing a listing is not enough; support with eligibility, resume and preparation is what turns awareness into selection.</li>
+</ul>
+
+<h2>11. What Makes ReachUp Different</h2>
+<table>
+  <tr><th style="width:45%">Existing job and internship portals</th><th>ReachUp</th></tr>
+  <tr><td>Mostly English</td><td>Local languages with voice support</td></tr>
+  <tr><td>Student has to search on many sites</td><td>Opportunities collected in one place and sent to the student</td></tr>
+  <tr><td>Same list for everyone</td><td>Personalised matching with a clear eligibility check</td></tr>
+  <tr><td>Heavy websites and apps</td><td>Lite app, WhatsApp bot and SMS for low internet</td></tr>
+  <tr><td>No check on fake listings</td><td>Verified badge and scam warnings</td></tr>
+  <tr><td>Only shows the listing</td><td>Guides the student from discovery to application and after</td></tr>
+  <tr><td>Online only</td><td>Online plus local community champions</td></tr>
+</table>
+
+<!-- ============ PLAN / MODEL / IMPACT ============ -->
+
+<h2>12. Build Plan and Progress</h2>
+<table>
+  <tr><th style="width:18%">Phase</th><th>What we will build</th><th style="width:16%">Status</th></tr>
+  <tr><td><b>Phase 1 (prototype)</b></td><td>Student sign-up and simple profile, opportunity feed, matching and eligibility check, opportunity detail page with checklist, deadline reminders, Hindi and English.</td><td><span class="pill done">Done ✓</span></td></tr>
+  <tr><td><b>Phase 2</b></td><td>WhatsApp bot, resume builder, verification and scam check, organisation portal, live data from government portals and partners.</td><td><span class="pill next">Scam check + tracker done; rest next</span></td></tr>
+  <tr><td><b>Phase 3</b></td><td>More Indian languages with voice, mentor connect, SMS / missed-call alerts, community champion dashboard, skill gap course suggestions.</td><td><span class="pill later">Planned</span></td></tr>
+</table>
+
+<h3>Next 3 months after the ideathon</h3>
+<ul>
+  <li><b>Month 1:</b> move opportunities to a live database and connect the first sources (government portals, scholarship portals); add the organisation portal for partners to post directly.</li>
+  <li><b>Month 2:</b> launch the WhatsApp bot and the resume builder; add 2–3 more Indian languages.</li>
+  <li><b>Month 3:</b> pilot with 2–3 colleges / ITIs in one district, with local student champions; measure sign-ups, applications and selections.</li>
+</ul>
+
+<h2>13. How ReachUp Can Sustain Itself</h2>
+<p><b>ReachUp stays free for students, always.</b> Costs are covered by the organisations who benefit from reaching rural talent:</p>
+<table>
+  <tr><th style="width:28%">Who pays</th><th>For what</th></tr>
+  <tr><td><b>Companies and startups</b></td><td>Featured listings and searching the talent pool by skill and location (basic posting stays free).</td></tr>
+  <tr><td><b>CSR foundations and NGOs</b></td><td>Outreach campaigns so their scholarships and programs reach the right students, with reports on reach and applications.</td></tr>
+  <tr><td><b>Colleges, ITIs and polytechnics</b></td><td>A placement dashboard to share opportunities with all their students and track outcomes.</td></tr>
+  <tr><td><b>Government schemes</b></td><td>Partnerships to increase applications from rural areas for internships, apprenticeships and scholarships.</td></tr>
+</table>
+
+<h2>14. How We Will Measure Impact</h2>
+<ul>
+  <li>Number of students registered from rural and semi-urban areas.</li>
+  <li>Number of applications submitted through the platform.</li>
+  <li>Number of students selected for internships, jobs, scholarships or programs.</li>
+  <li>Time taken from sign-up to first application.</li>
+  <li>Number of organisations posting opportunities and hiring from the platform.</li>
+  <li>Number of fake listings caught before reaching students.</li>
+</ul>
+
+<h2>15. Challenges and How We Handle Them</h2>
+<table>
+  <tr><th style="width:28%">Challenge</th><th>Our approach</th></tr>
+  <tr><td><b>Poor internet connectivity</b></td><td>Lite app, offline saving, WhatsApp and SMS options.</td></tr>
+  <tr><td><b>Low digital confidence</b></td><td>Voice input, simple screens, local community champions.</td></tr>
+  <tr><td><b>Keeping listings up to date</b></td><td>Automatic regular updates and removal of expired listings.</td></tr>
+  <tr><td><b>Trust and fake opportunities</b></td><td>Verification process, verified badges and user reporting.</td></tr>
+  <tr><td><b>Data privacy</b></td><td>Only necessary data collected, clear consent, and students control who sees their profile. In the prototype, the profile never leaves the student's phone.</td></tr>
+  <tr><td><b>Getting organisations to join</b></td><td>Free posting, access to a large talent pool, and partnerships with colleges and CSR programs.</td></tr>
+</table>
+
+<h2>16. Conclusion</h2>
+<p>ReachUp connects rural and semi-urban talent to the opportunities they deserve. It brings verified, relevant opportunities to students in their own language and on the apps they already use, and it supports them at every step from discovery to selection. It also helps organisations find capable people beyond big cities.</p>
+<p>Our working prototype already shows the core of this: a student answers a few simple questions in Hindi, sees which opportunities they are eligible for, is protected from fake offers, and is guided and reminded until they apply.</p>
+<div class="box"><b>Our goal is simple: no talented student should miss an opportunity just because of where they live.</b></div>
+
+</body>
+</html>
